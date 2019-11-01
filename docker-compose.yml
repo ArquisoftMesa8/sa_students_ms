@@ -1,0 +1,18 @@
+version: '2'
+services:
+  courses-db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: courses-db
+      MYSQL_PASSWORD: '123'
+      MYSQL_ROOT_PASSWORD: '123'
+      MYSQL_USER: sa
+    ports:
+    - 3306:3306/tcp
+  courses-ms:
+    build: .
+    ports:
+    - 3000:3000/tcp
+    depends_on: 
+    - courses-db
+      
